@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "UploadByAjax";
+}
+
+<h1>UploadByAjax</h1>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.js"></script>
+
+<input id="fileUpload" type="file" />
+<br />
+<input id="displayName" type="text" value="Enter a unique name" />
+<br />
+<input id="addFileButton" type="button" value="Upload" onclick="uploadFile()" />
+
+<script type="text/javascript">
+
+    function uploadFile() {
+        //上传文件
+        var fdate = new FormData();
+        var file = $("#fileUpload").get(0).files;
+        //如果文件存在
+        if (file != null) {
+            //自定义一个文件名称并添加到尾部
+            fdate.append("file", file[0]);
+        }
+        var ajaxRequest = $.ajax({
+            url: "http://localhost:5000/api/Media",
+            type: "post",
+            processData: false,
+            contentType: false,
+            data: fdate
+        });
+    }
+
+</script>

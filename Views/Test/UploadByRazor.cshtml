@@ -1,0 +1,18 @@
+﻿
+@{
+    ViewData["Title"] = "UploadByRazor";
+}
+
+<h1>UploadByRazor</h1>
+
+<div class="widget-main no-padding">
+    @using (Html.BeginForm("PostMedia", "test", FormMethod.Post,new { enctype = "multipart/form-data" }))
+    {
+        <span>上传文件</span>
+        <br />
+        <input type="file" name="file" />
+        <br />
+        <br />
+        <input id="ButtonUpload" type="submit" value="提交" />
+    }
+</div>
